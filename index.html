@@ -938,11 +938,16 @@
         </main>
     </div>
 
-    <script>
+    <script type="module">
+
+        import { DOBBY_API_KEY, API_JOB_KEY } from './key.js';
+
+        console.log(DOBBY_API_KEY);
+        console.log(API_JOB_KEY);
         // Configuration
         const CONFIG = {
-            DOBBY_KEY: process.env.NEXT_PUBLIC_DOBBY_API_KEY,
-            API_JOB: process.env.NEXT_PUBLIC_API_JOB_KEY,
+            DOBBY_KEY: DOBBY_API_KEY,
+            API_JOB: API_JOB_KEY,
             MAX_JOBS: 10,
             TYPING_DELAY: 1500,
             MESSAGE_DELAY: 500
@@ -2010,5 +2015,4 @@ Be concise. No unnecessary words.`;
         }, 1000);
     </script>
 </body>
-
 </html>
