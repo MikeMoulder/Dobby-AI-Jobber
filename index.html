@@ -1933,24 +1933,6 @@ Be concise. No unnecessary words.`;
 
         // Initialize the application when DOM is loaded
         document.addEventListener('DOMContentLoaded', init);
-
-        // Add some easter eggs and advanced features
-        function addEasterEggs() {
-            // Konami code easter egg
-            let konamiCode = [];
-            const konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
-            
-            document.addEventListener('keydown', (e) => {
-                konamiCode.push(e.keyCode);
-                if (konamiCode.length > 10) konamiCode.shift();
-                
-                if (konamiCode.join(',') === konami.join(',')) {
-                    addMessage("🎉 <strong>Easter Egg Activated!</strong> You found the secret! Dobby's magical powers are now at maximum level! ✨", 'assistant', 'success-message');
-                    konamiCode = [];
-                }
-            });
-        }
-
         // Advanced features
         function enableAdvancedFeatures() {
             // Voice recognition (if supported)
@@ -2016,7 +1998,6 @@ Be concise. No unnecessary words.`;
 
         // Initialize advanced features
         setTimeout(() => {
-            addEasterEggs();
             enableAdvancedFeatures();
         }, 1000);
     </script>
