@@ -940,11 +940,14 @@
 
     <script type="module">
 
-        import { DOBBY_API_KEY, API_JOB_KEY } from './key.js';
+       // import { DOBBY_API_KEY, API_JOB_KEY } from './key.js';
 
-        console.log(DOBBY_API_KEY);
-        console.log(API_JOB_KEY);
-        // Configuration
+        //console.log(DOBBY_API_KEY);
+        //console.log(API_JOB_KEY);
+        // Configuration - Add your API keys here
+        const DOBBY_API_KEY = 'your-dobby-api-key-here';
+        const API_JOB_KEY = 'your-job-api-key-here';
+        
         const CONFIG = {
             DOBBY_KEY: DOBBY_API_KEY,
             API_JOB: API_JOB_KEY,
@@ -1920,6 +1923,10 @@ Be concise. No unnecessary words.`;
             elements.messageInput.focus();
             autoResizeTextarea();
         }
+
+        // Make functions globally accessible for onclick handlers
+        window.sendSuggestion = sendSuggestion;
+        window.sendMessage = sendMessage;
 
         function scrollToBottom() {
             elements.chatMessages.scrollTop = elements.chatMessages.scrollHeight;
