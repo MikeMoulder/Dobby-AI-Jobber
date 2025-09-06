@@ -940,14 +940,8 @@
 
     <script type="module">
 
-       // import { DOBBY_API_KEY, API_JOB_KEY } from './key.js';
+       import { DOBBY_API_KEY, API_JOB_KEY } from './key.js';
 
-        //console.log(DOBBY_API_KEY);
-        //console.log(API_JOB_KEY);
-        // Configuration - Add your API keys here
-        const DOBBY_API_KEY = 'your-dobby-api-key-here';
-        const API_JOB_KEY = 'your-job-api-key-here';
-        
         const CONFIG = {
             DOBBY_KEY: DOBBY_API_KEY,
             API_JOB: API_JOB_KEY,
@@ -1058,6 +1052,7 @@ async function sendMessage() {
         if (state.waitingForJobPosition) {
             // User provided job position, fetch jobs from API
             state.waitingForJobPosition = false;
+            addToRecentSearches(message);
             await handleJobSearch(message);
             setLoading(false);
             return;
@@ -1145,6 +1140,10 @@ async function handleJobSearch(position) {
 
         if (!jobs.length) {
             addMessage(`No ${position} jobs found. Try a different position.`, 'assistant', 'error-message');
+            // Fall back to asking for position again
+            state.waitingForJobPosition = true;
+            const response = "What specific position are you looking for? (e.g., Community Manager, React Developer, FullStack Developer, etc.)";
+            addMessage(response, 'assistant');
             return;
         }
 
@@ -1914,7 +1913,7 @@ Be concise. No unnecessary words.`;
             const saved = localStorage.getItem('dobby_recent_searches');
             if (saved) {
                 state.recentSearches = JSON.parse(saved);
-                 updateRecentSearchesDisplay();
+                updateRecentSearchesDisplay();
             }
         }
 
